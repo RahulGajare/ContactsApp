@@ -9,14 +9,14 @@ import kotlinx.coroutines.flow.Flow
     interface ContactDao {
 
         @Insert(onConflict = OnConflictStrategy.IGNORE)
-        fun addContact(contact : Contact)
+        suspend  fun addContact(contact : Contact)
 
         @Query("SELECT * FROM Contact ORDER BY name ASC")
-        fun getAllContacts() : Flow<List<Contact>>
+         fun getAllContacts() : Flow<List<Contact>>
 
         @Update
-        fun updateContact(contact : Contact)
+        suspend fun updateContact(contact : Contact)
 
         @Delete
-        fun deleteContact(contact: Contact)
+        suspend fun deleteContact(contact: Contact)
     }

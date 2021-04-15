@@ -10,6 +10,6 @@ class ContactApplication : Application() {
 
     val applicationScope = CoroutineScope(SupervisorJob())
 
-    val database by lazy { ContactsRoomDataBase.getDatabase(this, applicationScope) }
+    val database by lazy { ContactsRoomDataBase.getDatabase(this) }
     val repository by lazy { ContactRepository(database.contactDao()) }
 }

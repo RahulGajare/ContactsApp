@@ -15,10 +15,10 @@ class HomePageFragmentAdapter(fragmentActivity : FragmentActivity) : FragmentSta
     override fun createFragment(position: Int): Fragment {
         when (position)
         {
-            1 -> {
+            0 -> {
                     return  ContactsFragment();
             }
-                2 ->
+                1 ->
                 {
                     return  FavContactsFragment();
                 }

@@ -11,7 +11,7 @@ import com.rg.contacts.R
 import com.rg.contacts.entities.Contact
 import com.rg.contacts.interfaces.ItemClick
 
-class ContactAdapter(private val dataSet: List<Contact>, val itemClick : ItemClick) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+class ContactsAdapter(private val dataSet: List<Contact>, val itemClick : ItemClick) : RecyclerView.Adapter<ContactsAdapter.ContactViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
@@ -20,22 +20,24 @@ class ContactAdapter(private val dataSet: List<Contact>, val itemClick : ItemCli
     class ContactViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView
         val imageView : ImageView
-        val number : ConstraintLayout
+        val number : TextView
+        val itemLayout : ConstraintLayout
 
         init {
             // Define click listener for the ViewHolder's View.
             name = view.findViewById(R.id.tvName)
             imageView = view.findViewById(R.id.ivPicture)
             number = view.findViewById(R.id.tvMobile)
-
+            itemLayout = view.findViewById(R.id.itemLayout)
 
         }
 
         fun bind(contact : Contact, clickListener: ItemClick)
         {
             name.text = contact.name
+            number.text = contact.mobile
             imageView.setImageResource(R.drawable.ic_add)
-            number.setOnClickListener(View.OnClickListener {
+            itemLayout.setOnClickListener(View.OnClickListener {
                 clickListener.onItemClicked(contact)
             })
 
